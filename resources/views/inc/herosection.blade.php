@@ -5,7 +5,7 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>All departments</span>
+                        <span>All Catagory</span>
                     </div>
                     <ul>
                     @foreach ($categories as $category)
@@ -33,7 +33,7 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
+                            <h5>{{ $site->phone }}</h5>
                             <span>support 24/7 time</span>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <span>FRUIT FRESH</span>
                         <h2>Vegetable <br />100% Organic</h2>
                         <p>Free Pickup and Delivery Available</p>
-                        <a href="#" class="primary-btn">SHOP NOW</a>
+                        <a href="{{ url('shop') }}" class="primary-btn">SHOP NOW</a>
                     </div>
                 </div>
             </div>

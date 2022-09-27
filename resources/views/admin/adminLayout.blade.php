@@ -91,13 +91,14 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="{{ url('admin/category/create') }}"><span class="ml-1 item-text">Add Categories</span>
-                  </a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link pl-3" href="{{ url('admin/category') }}"><span class="ml-1 item-text">All Categories</span>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="{{ url('admin/category/create') }}"><span class="ml-1 item-text">Add Categories</span>
+                  </a>
+                </li>
+                
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -116,11 +117,11 @@
                 </li>
               </ul>
             </li>
+            
             <li class="nav-item w-100">
-              <a class="nav-link" href="widgets.html">
+              <a class="nav-link" href="{{ url('admin/order') }}">
                 <i class="fe fe-layers fe-16"></i>
-                <span class="ml-3 item-text">Widgets</span>
-                <span class="badge badge-pill badge-primary">New</span>
+                <span class="ml-3 item-text">Orders</span>
               </a>
             </li>
             <li class="nav-item w-100">

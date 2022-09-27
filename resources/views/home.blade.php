@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Best Product</h2>
+                    <h2>Best Products</h2>
                 </div>
         
                 

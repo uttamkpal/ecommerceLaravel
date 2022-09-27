@@ -4,12 +4,7 @@
 @section('content')
     <section class="checkout spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h6><span class="icon_tag_alt"></span> Have a coupon? <a href="#">Click here</a> to enter your code
-                    </h6>
-                </div>
-            </div>
+            
             <div class="checkout__form">
                 <h4>Billing Details</h4>
                 <form role="form" action="{{ url('order/stripe') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
@@ -88,14 +83,8 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
                                     ut labore et dolore magna aliqua.
                                 </p>
-                                <div class="checkout__input__checkbox">
-                                    <label for="payment2">
-                                        Card Payment
-                                        <input type="checkbox" id="payment2">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div id="card-details" class="">
+                                
+                                <div class="">
                                     <div class="row">
 
                                         <div class="">
@@ -227,9 +216,9 @@
     <script>
         $(document).ready(function() {
 
-            $('#payment2').click(function() {
-                $('#card-details').toggle();
-            });
+            // $('#payment2').click(function() {
+            //     $('#card-details').toggle();
+            // });
 
         });
     </script>

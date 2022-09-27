@@ -8,8 +8,10 @@ use Stripe\Charge;
 
 use Stripe\Stripe;
 use App\Models\Cart;
+use App\Models\Site;
 use App\Models\Order;
 use App\Models\product;
+use App\Models\category;
 use App\Models\Orderaddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,5 +95,31 @@ class OrderController extends Controller
         // dd(Auth::user()->password);
         // dd($request);
         return back();
+    }
+    public function admin_order(){
+        $orders = Order::with('user', 'Products', 'orderaddress')->get();
+        // foreach($orders as $order){
+        //     $order->address = Orderaddress::where('order_id', '=', $order->invoice)->get();
+            
+        // }
+        // dd($orders->address->city);
+        // dd($orders);
+        return view('admin.order.index', ['orders' => $orders]);
+    }
+    public function user_order(){
+        $site = Site::all()->first();
+        $products = product::latest()->get();
+        $categories = category::all();
+        $carts = Cart::where('user_id', Auth::id())->count();
+        $cartdata = Cart::where('user_id', Auth::id())->get();
+
+        $orders = Order::with('Products', 'orderaddress')->where('user_id', Auth::user()->id)->get();
+        // foreach($orders as $order){
+        //     $order->address = Orderaddress::where('order_id', '=', $order->invoice)->get();
+            
+        // }
+        // dd($orders->address->city);
+        // dd($orders);
+        return view('order', ['site' => $site ,'products'=> $products, 'categories'=> $categories, 'carts'=>$carts, 'cartdata'=> $cartdata, 'orders' => $orders]);
     }
 }

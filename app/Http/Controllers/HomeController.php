@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Site;
 use App\Models\product;
 use App\Models\category;
 use Illuminate\Http\Request;
@@ -13,21 +14,24 @@ class HomeController extends Controller
     public function index(){
         $products = product::latest()->get();
         $categories = category::all();
+        $site = Site::all()->first();
         $carts = Cart::where('user_id', Auth::id())->count();
         
         
-        return view('home', ['products'=> $products, 'categories'=> $categories, 'carts'=>$carts]);
+        return view('home', ['site' => $site , 'products'=> $products, 'categories'=> $categories, 'carts'=>$carts]);
     }
     public function product_details($id){
+        $site = Site::all()->first();
         $product = product::find($id);
         $products = product::where('category_id', '=', $product->category_id)->get();
         $carts = Cart::where('user_id', Auth::id())->count();
-        return view('product_details', ['product'=> $product, 'products'=>$products, 'carts'=>$carts]);
+        return view('product_details', ['site' => $site ,'product'=> $product, 'products'=>$products, 'carts'=>$carts]);
     }
     public function cart(){
+        $site = Site::all()->first();
         $carts = Cart::where('user_id', Auth::id())->count();
         $cartdata = Cart::where('user_id', Auth::id())->get();
-        return view('cart', ['carts'=>$carts, 'cartdata' =>$cartdata]);
+        return view('cart', ['site' => $site ,'carts'=>$carts, 'cartdata' =>$cartdata]);
     }
     public function add_cart(Request $req, $id){
         $cart = new Cart();
@@ -41,5 +45,20 @@ class HomeController extends Controller
         $cart = Cart::find($id);
         $cart->delete();
         return redirect()->back();
+    }
+    public function shop(){
+        $site = Site::all()->first();
+        $products = product::latest()->get();
+        $categories = category::all();
+        $carts = Cart::where('user_id', Auth::id())->count();
+        $cartdata = Cart::where('user_id', Auth::id())->get();
+
+        // foreach($orders as $order){
+        //     $order->address = Orderaddress::where('order_id', '=', $order->invoice)->get();
+            
+        // }
+        // dd($orders->address->city);
+        // dd($orders);
+        return view('shop', ['site' => $site ,'products'=> $products, 'categories'=> $categories, 'carts'=>$carts]);
     }
 }

@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\AdminController;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/product/{id}', [HomeController::class, 'product_details']);
+Route::get('/shop', [HomeController::class, 'shop']);
 
 Route::get('isAdmin', function(){
     if(Auth::user() && Auth::user()->usertype == '1'){
@@ -31,6 +32,7 @@ Route::middleware([
     Route::get('cart/delete/{id}', [HomeController::class, 'cart_delete']);
     Route::get('check-out', [OrderController::class, 'index'] );
     Route::post('order/stripe', [OrderController::class, 'stripe'] );
+    Route::get('order', [OrderController::class, 'user_order'] );
 });
 
 Route::group(['prefix' => 'admin', 'middleware'=> [
@@ -55,4 +57,7 @@ Route::group(['prefix' => 'admin', 'middleware'=> [
     Route::get('/product/delete/{id}', [ProductController::class, 'delete']);
     Route::get('/product/edit/{id}', [ProductController::class, 'edit']);
     Route::post('/product/update/{id}', [ProductController::class, 'update']);
+
+    Route::get('/order', [OrderController::class, 'admin_order']);
+
 });
