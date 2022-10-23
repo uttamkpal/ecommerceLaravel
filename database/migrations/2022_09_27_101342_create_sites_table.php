@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->default('uttampal.kumar@gmail.com');
             $table->string('facebook')->default('UttamSping');
             $table->string('twitter')->default('UttamSping');
-            $table->string('instragram')->default('UttamSping');
+            $table->string('instagram')->default('UttamSping');
             $table->string('pinterest')->default('UttamSping');
             $table->timestamps();
         });

@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/technobizbd/public_html/uttamecom
+    - /bin/cp * $DEPLOYPATH
